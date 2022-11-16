@@ -1,0 +1,38 @@
+DECLARE balance, transactionAmount, amountShort : INTEGER
+DECLARE penalty : REAL
+DECLARE choice : STRING
+
+balance <-- 2000
+transactionAmount <-- 0
+amountShort <-- 0
+penalty <-- 0.0
+choice <-- ""
+
+WHILE choice <> "N" DO
+    
+    INPUT "How much would you like to transact?" transactionAmount
+
+    IF transactionAmount > balance 
+        THEN
+            OUTPUT "Insufficient funds!"
+    ENDIF
+
+    IF transactionAmount >= 800
+        THEN
+            OUTPUT "Transaction amount exceeds daily limit of 800 rupees!"
+        ELSE
+            balance <-- balance - transactionAmount
+
+            IF balance < 500
+                THEN
+                    amountShort <-- 500 - balance
+                    penalty <-- amountShort * 0.02
+                    OUTPUT "You have been charged a penalty of ", penalty, "rupees!"
+                ELSE
+                    OUTPUT "Transaction has been successfully completed!"
+            ENDIF
+    ENDIF
+
+    INPUT "Enter N to exit or any other kep to continue:" choice
+
+ENDWHILE
