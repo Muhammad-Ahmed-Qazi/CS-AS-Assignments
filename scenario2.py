@@ -13,22 +13,22 @@ while True:
     # 1. Debit account must not exceed the account balance
     if transactionAmount > balance:
         print("Insufficient funds!")
-
-    # 2. Debit amount must not exceed the daily limit of 800 rupees
-    if transactionAmount >= 800:
-        print("Transaction amount exceeds daily limit of 800 rupees!")
     else:
-        balance = balance - transactionAmount
-        
-        # 3. Leftover balance must not be less than 500 rupees. If it is, a penalty of 2% of amount short is charged.
-        if balance < 500:
-            amountShort = 500 - balance
-            penalty = amountShort * 0.02
-            print("You have been charged a penalty of", penalty, "rupees!")
+        # 2. Debit amount must not exceed the daily transaction limit of 800 rupees
+        if transactionAmount > 800:
+            print("Transaction amount exceeds daily limit of 800 rupees!")
         else:
-            print("Transaction has been successfully completed!")
+            balance = balance - transactionAmount
+            
+            # 3. Leftover balance must not be less than 500 rupees. If it is, a penalty of 2% of amount short is charged.
+            if balance < 500:
+                amountShort = 500 - balance
+                penalty = amountShort * 0.02
+                print("You have been charged a penalty of", penalty, "rupees!")
+            else:
+                print("Transaction has been successfully completed!")
     
     # User can choose to exit the program
-    choice = input("Enter N to exit or any other key to continue")
+    choice = input("Enter N to exit or any other key to continue: ")
     if choice == 'N' or choice == 'n':
         break

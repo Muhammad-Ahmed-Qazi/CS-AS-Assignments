@@ -1,38 +1,46 @@
+// Declaration
 DECLARE balance, transactionAmount, amountShort : INTEGER
 DECLARE penalty : REAL
 DECLARE choice : STRING
 
+// Initialisation
 balance <-- 2000
 transactionAmount <-- 0
 amountShort <-- 0
 penalty <-- 0.0
 choice <-- ""
 
+// Looping to keep the program running until the user chooses to exit
 WHILE choice <> "N" DO
     
+    // Input
     INPUT "How much would you like to transact?" transactionAmount
 
+    // 1. Debit account must not exceed the account balance
     IF transactionAmount > balance 
         THEN
             OUTPUT "Insufficient funds!"
-    ENDIF
-
-    IF transactionAmount >= 800
-        THEN
-            OUTPUT "Transaction amount exceeds daily limit of 800 rupees!"
         ELSE
-            balance <-- balance - transactionAmount
-
-            IF balance < 500
+            // 2. Debit amount must not exceed the daily transaction limit of 800 rupees
+            IF transactionAmount > 800
                 THEN
-                    amountShort <-- 500 - balance
-                    penalty <-- amountShort * 0.02
-                    OUTPUT "You have been charged a penalty of ", penalty, "rupees!"
+                    OUTPUT "Transaction amount exceeds daily limit of 800 rupees!"
                 ELSE
-                    OUTPUT "Transaction has been successfully completed!"
+                    balance <-- balance - transactionAmount
+
+                    // 3. Leftover balance must not be less than 500 rupees. If it is, a penalty of 2% of amount short is charged.
+                    IF balance < 500
+                        THEN
+                            amountShort <-- 500 - balance
+                            penalty <-- amountShort * 0.02
+                            OUTPUT "You have been charged a penalty of ", penalty, "rupees!"
+                        ELSE
+                            OUTPUT "Transaction has been successfully completed!"
+                    ENDIF
             ENDIF
     ENDIF
 
-    INPUT "Enter N to exit or any other kep to continue:" choice
+    // User can choose to exit the program
+    INPUT "Enter N to exit or any other key to continue:" choice
 
 ENDWHILE
