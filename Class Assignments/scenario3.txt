@@ -1,0 +1,57 @@
+// Declaration
+DECLARE stStart, stEnd, noPassengers, noStations, fare : INTEGER
+DECLARE choice : STRING
+
+// Initialisation
+stStart <-- 0
+stEnd <-- 0
+noPassengers <-- 0
+noStations <-- 0
+fare <-- 0
+choice <-- ""
+
+WHILE choice <> "N" DO
+
+    // Input
+    INPUT "Enter the station no. you are starting from: ", stStart
+    INPUT "Enter the station no. you are getting off at: ", stEnd
+
+    // Checking whether stations input are in the range of 1 and 5 or not
+    IF stStart < 1 OR stStart > 5
+        THEN
+            OUTPUT "There are only five stations! (1 -> 5)"
+    ELSEIF stEnd < 1 OR stEnd > 5
+        THEN
+            OUTPUT "There are only five stations! (1 -> 5)"
+    ELSE
+        // Input
+        INPUT "Enter the no. of passengers: ", noPassengers
+
+        // Calculating no. of stations
+        IF stEnd > stStart
+            THEN
+                noStations <-- stEnd - stStart
+        ELSEIF stStart > stEnd
+            THEN
+                noStations <-- stStart - stEnd
+        
+        // Calculating fare
+        fare <-- (2 * noPassengers) * noStations
+
+        // Applying discount according to conditions
+        IF noPassengers >= 5 AND noPassengers <= 9
+            THEN
+                fare <-- fare - 8
+        ELSEIF noPassengers > 9
+            THEN
+                fare <-- fare - 15
+        ENDIF
+
+        // Fare output
+        OUTPUT "Your fare: ", fare, "rupees"
+    ENDIF
+
+    // User can choose to exit the program
+    INPUT "Enter N to exit or any other key to continue:", choice
+
+ENDWHILE

@@ -1,9 +1,8 @@
 ' Declaration
-DIM balance, transactionAmount, amountShort AS INTEGER
-DIM penalty AS DOUBLE
+DIM balance, transactionAmount, amountShort, penalty AS DOUBLE
 DIM choice AS STRING
 
-' Initialization
+' Initialisation
 balance = 2000
 transactionAmount = 0
 amountShort = 0
@@ -28,19 +27,23 @@ DO WHILE choice <> "N"
             balance = balance - transactionAmount
 
             ' 3. Leftover balance must not be less than 500 rupees. If it is, a penalty of 2% of amount short is charged.
-            IF balance < 500 THEN
+            IF balance < 500 AND transactionAmount > 0 THEN
                 amountShort = 500 - balance
                 penalty = amountShort * 0.02
                 Console.WriteLine("You have been charged a penalty of " & penalty & " rupees!")
+                balance = balance - penalty
             ELSE
                 Console.WriteLine("Transaction successful!")
             END IF
-
         END IF
     END IF
+
+    Console.WriteLine("Balance: " & balance)
 
     ' User can choose to exit the program
     Console.Write("Enter N to exit or any other key to continue: ")
     choice = Console.ReadLine()
 
 LOOP
+
+Console.ReadKey()

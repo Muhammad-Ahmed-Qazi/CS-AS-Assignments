@@ -1,12 +1,11 @@
 // Declaration
-DECLARE balance, transactionAmount, amountShort : INTEGER
-DECLARE penalty : REAL
+DECLARE balance, transactionAmount, amountShort, penalty : CURRENCY
 DECLARE choice : STRING
 
 // Initialisation
-balance <-- 2000
-transactionAmount <-- 0
-amountShort <-- 0
+balance <-- 2000.0
+transactionAmount <-- 0.0
+amountShort <-- 0.0
 penalty <-- 0.0
 choice <-- ""
 
@@ -14,7 +13,7 @@ choice <-- ""
 WHILE choice <> "N" DO
     
     // Input
-    INPUT "How much would you like to transact?" transactionAmount
+    INPUT "How much would you like to transact?", transactionAmount
 
     // 1. Debit account must not exceed the account balance
     IF transactionAmount > balance 
@@ -29,18 +28,21 @@ WHILE choice <> "N" DO
                     balance <-- balance - transactionAmount
 
                     // 3. Leftover balance must not be less than 500 rupees. If it is, a penalty of 2% of amount short is charged.
-                    IF balance < 500
+                    IF balance < 500 AND transactionAmount > 0
                         THEN
                             amountShort <-- 500 - balance
                             penalty <-- amountShort * 0.02
                             OUTPUT "You have been charged a penalty of ", penalty, "rupees!"
+                            balance <-- balance - penalty
                         ELSE
                             OUTPUT "Transaction has been successfully completed!"
                     ENDIF
             ENDIF
     ENDIF
 
+    OUTPUT "Balance: ", balance
+
     // User can choose to exit the program
-    INPUT "Enter N to exit or any other key to continue:" choice
+    INPUT "Enter N to exit or any other key to continue:", choice
 
 ENDWHILE
