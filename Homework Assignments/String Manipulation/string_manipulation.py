@@ -66,6 +66,7 @@ def vowelCount():
         if stringOrig[count] in vowels:
             countVowl += 1
     print("Number of vowels in the string:", countVowl)
+
 def anagram():
     string1 = input("Enter the first string: ")
     string2 = input("Enter the second string: ")

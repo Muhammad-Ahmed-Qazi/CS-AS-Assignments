@@ -1,0 +1,25 @@
+DECLARE stringOrig : STRING
+DECLARE character : CHAR
+DECLARE count, countVowl : INTEGER
+DECLARE vowels : ARRAY[1:5] OF CHAR
+
+stringOrig <-- ""
+character <-- ""
+
+count <-- 0
+countVowl <-- 0
+
+vowels <-- {'a', 'e', 'i', 'o', 'u'}
+
+INPUT "Enter a string to count vowels in: ", stringOrig
+stringOrig <-- stringOrig.LCASE()
+
+FOR count <-- 1 TO LEN(stringOrig)
+    character <-- MID(stringOrig, count, 1)
+    IF vowels.CONTAINS(character)
+      THEN
+        countVowl <-- countVowl + 1
+    ENDIF
+NEXT
+
+OUTPUT "Number of vowels in the string: ", countVowl

@@ -1,0 +1,26 @@
+DECLARE stringOrig, outString : STRING
+DECLARE character : CHAR
+DECLARE count : INTEGER
+
+stringOrig <-- ""
+character <-- ''
+outString <-- ""
+
+count <-- 0
+
+INPUT "Enter a name (or string) to make an abbreviation of:", stringOrig
+
+FOR count 0 TO LEN(stringOrig)
+    character <-- stringOrig[count]
+    IF character = " "
+      THEN
+        outString <-- outString + stringOrig[count + 1]
+    ELSEIF count = 0
+      THEN
+        outString <-- outString + stringOrig[count]
+    ENDIF
+NEXT
+
+outString <-- outString.UPPER()
+
+OUTPUT "Abbreviation of input string: ", outString
