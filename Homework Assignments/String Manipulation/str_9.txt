@@ -11,16 +11,16 @@ count <-- 0
 INPUT "Enter a name (or string) to make an abbreviation of:", stringOrig
 
 FOR count 0 TO LEN(stringOrig)
-    character <-- stringOrig[count]
+    character <-- MID(stringOrig, count, 1)
     IF character = " "
       THEN
-        outString <-- outString + stringOrig[count + 1]
+        outString <-- outString + MID(stringOrig, count + 1, 1)
     ELSEIF count = 0
       THEN
-        outString <-- outString + stringOrig[count]
+        outString <-- outString + MID(stringOrig, count, 1)
     ENDIF
 NEXT
 
-outString <-- outString.UPPER()
+outString <-- UCASE(outString)
 
 OUTPUT "Abbreviation of input string: ", outString

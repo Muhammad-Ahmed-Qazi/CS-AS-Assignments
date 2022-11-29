@@ -12,7 +12,7 @@ countVowl <-- 0
 vowels <-- {'a', 'e', 'i', 'o', 'u'}
 
 INPUT "Enter a string to count vowels in: ", stringOrig
-stringOrig <-- stringOrig.LCASE()
+stringOrig <-- LCASE(stringOrig)
 
 FOR count <-- 1 TO LEN(stringOrig)
     character <-- MID(stringOrig, count, 1)
