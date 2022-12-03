@@ -1,0 +1,35 @@
+// Find if the input string has all the alphabets; capital or small alike.
+
+DECLARE strOrig, strNew : STRING
+DECLARE charAsc : CHARACTER
+DECLARE total, count : INTEGER
+
+strOrig <-- ""
+strNew <-- ""
+
+charAsc <-- ''
+
+total <-- 0
+count <-- 0
+
+INPUT "Enter a string: ", strOrig
+strOrig <-- LCASE(strOrig)
+
+FOR count <-- 1 TO LEN(strOrig)
+    charAsc <-- MID(strOrig, count, 1)
+    IF charAsc >= 'a' AND charAsc <= 'z'
+      THEN
+        IF INSTR(strNew, charAsc) = 0
+          THEN
+            strNew <-- strNew + charAsc
+            total <-- total + ASC(charAsc)
+        ENDIF
+    ENDIF
+  NEXT
+
+IF total = 2847
+  THEN
+    OUTPUT "The string has all the alphabets."
+  ELSE
+    OUTPUT "The string does not have all the alphabets."
+ENDIF

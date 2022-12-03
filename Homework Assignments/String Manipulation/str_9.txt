@@ -1,0 +1,17 @@
+// MixUp:
+//  - Given strings a and b, return a single string with a and b separated by a space '<a> <b>', except swap the first 2 chars of each string.
+//  - E.g. 'mix', pod' -> 'pox mid', 'dog', 'dinner' -> 'dig donner'
+//  - Assume a and b are length 2 or more.
+
+DECLARE a, b, strNew : STRING
+
+a <-- ""
+b <-- ""
+strNew <-- ""
+
+INPUT "Enter a string: ", a
+INPUT "Enter another string: ", b
+
+strNew <-- LEFT(b, 2) + MID(a, 3, LEN(a)) + ' ' + LEFT(a, 2) + MID(b, 3, LEN(b))
+
+OUTPUT "Altered string: " + strNew

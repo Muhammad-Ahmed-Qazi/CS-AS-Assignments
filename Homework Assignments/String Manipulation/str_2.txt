@@ -1,0 +1,30 @@
+// Replace selected character with another in entered string.
+
+DECLARE strOrig, strNew : STRING
+DECLARE charCurr, charRepl, charNew : CHARACTER
+DECLARE count : INTEGER
+
+strOrig <-- ""
+strNew <-- ""
+
+charCurr <-- ''
+charRepl <-- ''
+charNew <-- ''
+
+count <-- 0
+
+INPUT "Enter a string: ", strOrig
+INPUT "Enter a character to replace: (Case sensitive) ", charRepl
+INPUT "Enter a character to replace with: ", charNew
+
+FOR count <-- 1 TO LEN(strOrig)
+    charCurr <-- MID(strOrig, count, 1)
+    IF charCurr = charRepl
+      THEN
+        strNew <-- strNew + charNew
+      ELSE
+        strNew <-- strNew = charCurr
+    ENDIF
+NEXT
+
+OUTPUT "The new string is: " + strNew

@@ -1,0 +1,45 @@
+// Count and output the NUMBER of an entered character in a string. Also output separate counts for alphabets (cap & small together), digits and other characters in same entered string. 
+
+DECLARE strOrig : STRING
+DECLARE charCurr, charEntered : CHARACTER
+DECLARE count, charCount, alphaCount, digitCount, otherCount : INTEGER
+
+strOrig <-- ""
+
+charCurr <-- ''
+charEntered <-- ''
+
+count <-- 0
+
+charCount <-- 0
+alphaCount <-- 0
+digitCount <-- 0
+otherCount <-- 0
+
+INPUT "Enter a string: ", strOrig
+INPUT "Enter a character to count: (Not case sensitive) ", charEntered
+
+strOrig <-- LCASE(strOrig)
+
+FOR count <-- 1 TO LEN(strOrig)
+    charCurr <-- MID(strOrig, count, 1)
+    IF chaCurr = charEntered
+      THEN
+        charCount <-- charCount + 1
+    ENDIF
+
+    IF ASC(charCurr) >= 97 AND ASC(charCurr) <= 122
+      THEN
+        alphaCount <-- alphaCount + 1
+    ELSE IF ASC(charCurr) >= 48 AND ASC(charCurr) <= 97
+      THEN
+        digitCount <-- digitCount + 1
+      ELSE
+        otherCount <-- otherCount + 1
+    ENDIF
+NEXT
+
+OUTPUT "The entered character appears " + charCount + " times."
+OUTPUT "The entered string has " + alphaCount + " alphabets."
+OUTPUT "The entered string has " + digitCount + " digits."
+OUTPUT "The entered string has " + otherCount + " other characters."

@@ -1,0 +1,21 @@
+// Not_bad:
+//  - Given a string, find the first appearance of the substring 'not' and 'bad'. If the 'bad' follows the 'not', replace the whole 'not'...'bad' substring with 'good'.
+//  - Return the resulting string.
+//  - Input: 'This dinner is not that bad!' 
+//  - Outputs: This dinner is good!
+
+DECLARE strOrig, strNew : STRING
+
+strOrig <-- ""
+strNew <-- ""
+
+INPUT "Enter a string: ", strOrig
+
+IF INSTR(strOrig, "not") < INSTR(strOrig, "bad")
+  THEN
+    strNew <-- LEFT(strOrig, INSTR(strORig, "not") - 1) + "good" + MID(strOrig, INSTR(strOrig, "bad") + 3)
+  ELSE
+    strNew <-- strOrig
+ENDIf
+
+OUTPUT "Altered string: " + strNew

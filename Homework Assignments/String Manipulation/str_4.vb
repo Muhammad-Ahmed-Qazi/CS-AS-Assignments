@@ -38,6 +38,7 @@ Module Module1
                 End If
             End If
         Next
+        
         Console.WriteLine(strNew)
 
         count = 0

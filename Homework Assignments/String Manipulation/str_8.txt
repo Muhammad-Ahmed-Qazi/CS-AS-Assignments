@@ -1,0 +1,35 @@
+// Fix_start:
+//  - Given a string s, return a string where all occurences of its first char have been changed to '*', except do not change the first char itself.
+//  - E.g., 'babble' yields 'ba**le' or 'alpha' outputs 'alph*'.
+//  - Assume that the string is length 1 or more.
+
+DECLARE s, strNew : STRING
+DECLARE charFirst : CHARACTER
+DECLARE count : INTEGER
+DECLARE flag : BOOLEAN
+
+s <-- ""
+strNew <-- ""
+
+charFirst <-- ''
+
+count <-- 0
+
+flag <-- False
+
+INPUT "Enter a string: ", s
+
+s = LCASE(s)
+charFirst = LEFT(s, 1)
+
+FOR count <-- 1 TO LEN(s)
+    IF flag = TRUE AND MID(s, count, 1) = charFirst THEN strNew <-- strNew + '*'
+    ELSE IF flag = FALSE
+      THEN
+        strNew <-- strNew + MID(s, count, 1)
+        flag <-- TRUE
+    ELSE strNew <-- strNew + MID(s, count, 1)
+    ENDIF
+NEXT
+
+OUTPUT "ALtered string: ", strNew

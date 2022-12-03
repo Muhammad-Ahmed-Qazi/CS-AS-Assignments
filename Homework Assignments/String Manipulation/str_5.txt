@@ -1,0 +1,38 @@
+// Find the count of vowels characters in an entered string separately.
+
+DECLARE strOrig : STRING
+DECLARE charCurr : CHARACTER
+DECLARE count, a, e, i, o, u : INTEGER
+
+strOrig <-- ""
+
+charCurr <-- ''
+
+count <-- 0
+
+a <-- 0
+e <-- 0
+i <-- 0
+o <-- 0
+u <-- 0
+
+INPUT "Enter a string: ", strOrig
+
+strOrig <-- LCASE(strOrig)
+
+FOR count <-- 1 TO LEN(strOrig)
+    charCurr <-- MID(strOrig, count, 1)
+    IF charCurr = 'a' THEN a <-- a + 1
+    ELSE IF charCurr = 'e' THEN e <-- e + 1
+    ELSE IF charCurr = 'i' THEN e <-- i + 1
+    ELSE IF charCurr = 'o' THEN e <-- o + 1
+    ELSE IF charCurr = 'u' THEN e <-- u + 1
+    ENDIF
+NEXT
+
+OUTPUT "The count of vowels in the string is: "
+OUTPUT "a: " + a
+OUTPUT "e: " + e
+OUTPUT "i: " + i
+OUTPUT "o: " + o
+OUTPUT "u: " + u

@@ -1,0 +1,56 @@
+// Find the character that appears most number of times in an entered string and output it.
+
+DECLARE strOrig, strNew : STRING
+DECLARE charCurr : character
+DECLARE count, searchCount, charCountSta, charCountEnd, high : INTEGER
+
+strOrig <-- ""
+strNew <-- ""
+
+charCurr <-- ''
+
+count <-- 0
+searchCount <-- 0
+charCountSta <-- 0
+charCountEnd <-- 0
+high <-- 0
+
+INPUT "Enter a string: ", strOrig
+
+strOrig <-- LCASE(strOrig)
+
+FOR count <-- 1 TO LEN(strOrig)
+    charCurr <-- MID(strOrig, count, 1)
+    IF ASC(charCurr) >= 97 AND ASC(charCurr) <= 122
+      THEN
+        IF INSTR(strNew, charCurr) = 0
+          THEN
+            strNew <-- strNew + charCurr + '1' + ' '
+          ELSE
+            charCountSta <-- INSTR(strNew, charCurr) + 1
+            FOR searchCount <-- charCountSta TO (LEN(StrNew))
+                IF MID(strNew, searchCount, 1) = ' '
+                  THEN
+                    charCountEnd <-- searchCount
+                    EXIT FOR // Exiting for loop prematurely
+                ENDIF
+            NEXT
+            strNew <-- LEFT(strNew, charCountSta - 1) + (INT(MID(strNew, charCountSta, (charCountEnd - charCountSta))) + 1) + " " + RIGHT(strNew, (LEN(strNew) - charCountEnd))
+        ENDIF
+    ENDIF
+NEXT
+
+count <-- 0
+
+FOR count <-- 1 TO LEN(strNew)
+    charCurr <-- MID(strNew, count, 1)
+    IF ASC(charCurr) >= 48 AND ASC(charCurr) <= 57
+      THEN
+        IF VAL(charCurr) > high
+          THEN
+            high <-- VAL(charCurr)
+        ENDIF
+    ENDIF
+NEXT
+
+OUTPUT "The character that appears most number of times is: " + MID(strNew, (INSTR(strNew, high) - 1), 1))

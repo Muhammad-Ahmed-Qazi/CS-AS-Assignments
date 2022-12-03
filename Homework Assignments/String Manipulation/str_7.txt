@@ -1,0 +1,16 @@
+// Both_ends:
+//  - Input a string s, output a string made of the first 2 and the last 2 chars of the original string, so 'spring' yields 'spng'. 
+//  - However, if the string length is less than 2, return string s instead the empty string.
+
+DECLARE s, strNew : STRING
+
+s <-- ""
+strNew <-- ""
+
+INPUT "Enter a string: ", s
+
+IF LEN(s) < 2 THEN OUTPUT s
+ELSE
+    strNew <-- LEFT(s, 2) + RIGHT(s, 2)
+    OUTPUT strNew
+ENDIF
