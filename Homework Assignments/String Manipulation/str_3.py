@@ -13,7 +13,7 @@ digitCount = 0
 otherCount = 0
 
 strOrig = input("Enter a string: ")
-charEntered = input("Enter a character to count: ")
+charEntered = input("Enter a character to count: (Not case sensitive) ")
 
 strOrig = strOrig.lower()
 

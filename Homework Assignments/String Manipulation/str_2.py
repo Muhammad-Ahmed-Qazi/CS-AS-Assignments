@@ -10,7 +10,7 @@ charNew = ''
 count = 0
 
 strOrig = input("Enter a string: ")
-charRepl = input("Enter a character to replace: ")
+charRepl = input("Enter a character to replace: (Case sensitive) ")
 charNew = input("Enter a character to replace with: ")
 
 for count in range(0, len(strOrig)):

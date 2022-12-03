@@ -12,10 +12,11 @@ i = 0
 o = 0
 u = 0
 
-stringOrig = input("Enter a string: ")
+strOrig = input("Enter a string: ")
+strOrig = strOrig.lower()
 
-for count in range(0, len(stringOrig)):
-    charCurr = stringOrig[count]
+for count in range(0, len(strOrig)):
+    charCurr = strOrig[count]
     if charCurr == 'a':
         a = a + 1
     elif charCurr == 'e':

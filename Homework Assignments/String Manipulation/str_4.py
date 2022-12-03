@@ -7,6 +7,7 @@ charCurr = ''
 
 
 count = 0
+searchCount = 0
 charCountSta = 0
 charCountEnd = 0
 high = 0
